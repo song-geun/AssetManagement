@@ -22,7 +22,7 @@ public class AssetManageRepositroyV1 {
         JdbcUtils.closeConnection(con);
     }
 
-    private Connection getConnection() throws SQLException{{
+    private Connection getConnection() throws SQLException{
         Connection con = dataSource.getConnection();
         return con;
     }
