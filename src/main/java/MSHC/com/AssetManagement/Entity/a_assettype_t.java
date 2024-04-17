@@ -10,8 +10,8 @@ import lombok.*;
 @Getter
 @Setter
 @Entity
-public class Department {
+public class a_assettype_t {
     @Id
-    private Long departmentid;
-    private String departmentname;
+    private Long assettypeid;
+    private String assettypename;
 }

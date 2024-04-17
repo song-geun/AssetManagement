@@ -10,8 +10,8 @@ import lombok.*;
 @Getter
 @Setter
 @Entity
-public class SoftWare {
+public class a_department_t {
     @Id
-    private Long softwareid;
-    private String softwarename;
+    private Long departmentid;
+    private String departmentname;
 }

@@ -10,8 +10,8 @@ import lombok.*;
 @Getter
 @Setter
 @Entity
-public class OsType {
+public class a_software_t {
     @Id
-    private Long osid;
-    private String osname;
+    private Long softwareid;
+    private String softwarename;
 }

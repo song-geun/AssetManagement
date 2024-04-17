@@ -10,8 +10,8 @@ import lombok.*;
 @Getter
 @Setter
 @Entity
-public class AssetType {
+public class a_ostype_t {
     @Id
-    private Long assettypeid;
-    private String assettypename;
+    private Long osid;
+    private String osname;
 }

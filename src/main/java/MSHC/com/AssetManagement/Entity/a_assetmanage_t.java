@@ -10,9 +10,9 @@ import lombok.*;
 @Getter
 @Setter
 @Entity
-public class AssetManage {
+public class a_assetmanage_t {
     @Id
-    @Column
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long assetnum;
     @Column
     private String ip;

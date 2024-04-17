@@ -1,6 +1,6 @@
 package MSHC.com.AssetManagement.Dto;
 
-import MSHC.com.AssetManagement.Entity.AssetManage;
+import MSHC.com.AssetManagement.Entity.a_assetmanage_t;
 import lombok.Builder;
 import lombok.Data;
 
@@ -24,7 +24,7 @@ public class AssetManageDto {
     private final String MemoryPARAM; private final String SSDPARAM;
     private final String HDDPARAM; private final String VGAPARAM;
     private final String SoftWarePARAM;
-    public static AssetManageDto from(AssetManage Asset){
+    public static AssetManageDto from(a_assetmanage_t Asset){
         return AssetManageDto.builder()
                 .Assetnum(Asset.getAssetnum())
                 .IPPARAM(Asset.getIp()) // 이름과
