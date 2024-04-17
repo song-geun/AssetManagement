@@ -1,5 +1,6 @@
 package MSHC.com.AssetManagement.Entity;
 
+import jakarta.persistence.*;
 import lombok.*;
 
 
@@ -8,26 +9,49 @@ import lombok.*;
 @AllArgsConstructor
 @Getter
 @Setter
+@Entity
 public class AssetManage {
-    private Long AssetNum;
-    private String IP;
-    private String USECHK; // Y,N
-    private String AssetType;
-    private String HOSTNAME;
+    @Id
+    @Column
+    private Long assetnum;
+    @Column
+    private String ip;
+    @Column
+    private String usechk; // Y,N
+    @Column
+    private String assettype;
+    @Column
+    private String hostname;
+    @Column
     private String department;
-    private String UserName;
-    private String Model;
-    private String BuyDate;
+    @Column
+    private String username;
+    @Column
+    private String model;
+    @Column
+    private String buydate;
+    @Column
     private Double price;
-    private String Supplier;
-    private String BuyFlag;
-    private String REMARK;
-    private String Ostype;
-    private String Osinstl;
-    private String CPU;
-    private String Memory;
-    private String SSD;
-    private String HDD;
-    private String VGA;
-    private String SoftWare;
+    @Column
+    private String supplier;
+    @Column
+    private String buyflag;
+    @Column
+    private String remark;
+    @Column
+    private String ostype;
+    @Column
+    private String osinstl;
+    @Column
+    private String cpu;
+    @Column
+    private String memory;
+    @Column
+    private String ssd;
+    @Column
+    private String hdd;
+    @Column
+    private String vga;
+    @Column
+    private String software;
 }

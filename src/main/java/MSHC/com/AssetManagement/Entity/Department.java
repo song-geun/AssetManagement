@@ -1,5 +1,7 @@
 package MSHC.com.AssetManagement.Entity;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import lombok.*;
 
 @Data
@@ -7,7 +9,9 @@ import lombok.*;
 @AllArgsConstructor
 @Getter
 @Setter
+@Entity
 public class Department {
-    private Long DepartmentId;
-    private String DepartmentName;
+    @Id
+    private Long departmentid;
+    private String departmentname;
 }

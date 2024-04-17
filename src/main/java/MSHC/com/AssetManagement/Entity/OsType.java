@@ -1,5 +1,7 @@
 package MSHC.com.AssetManagement.Entity;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import lombok.*;
 
 @Data
@@ -7,7 +9,9 @@ import lombok.*;
 @AllArgsConstructor
 @Getter
 @Setter
+@Entity
 public class OsType {
-    private Long OsID;
-    private String OsName;
+    @Id
+    private Long osid;
+    private String osname;
 }
