@@ -3,11 +3,13 @@ package MSHC.com.AssetManagement.Controller;
 import MSHC.com.AssetManagement.Dto.AssetManageDto;
 import MSHC.com.AssetManagement.Entity.a_assetmanage_t;
 import MSHC.com.AssetManagement.Service.AssetManageService;
+import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.SQLException;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -31,20 +33,38 @@ public class AssetController {
     }
     @ResponseBody
     @PostMapping("/insert")
+    @Transactional(rollbackOn = {SQLException.class})
     public void insertAsset(@RequestBody a_assetmanage_t  data)
     {
         assetManageService.insertAsset(data.getIp(),data.getUsechk(),data.getAssettype(),data.getHostname(),data.getDepartment(),
                         data.getUsername(), data.getModel(), data.getBuydate(), data.getPrice(), data.getSupplier(), data.getBuyflag(), data.getRemark(),
                         data.getOstype(),data.getOsinstl(),data.getCpu(),data.getMemory(),data.getSsd(),data.getHdd(),data.getVga(),data.getSoftware()); // List형식으로 반환
     }
-    //test
-    /*
-    @GetMapping("/list/{str}")
-    public ResponseEntity<List<AssetManageDto>> findCitysStartWith(@PathVariable final String str){
-        return ResponseEntity.ok(assetManageService.findCitiesStartWith(str) // 만족하는 전체를 가져와서
-                .stream() // 스트림으로
-                .map(AssetManageDto::from) // DTO로 변경
-                .collect(Collectors.toList())); // List로 반환
+    @ResponseBody
+    @PostMapping("/insertAll")
+    @Transactional(rollbackOn = {SQLException.class})
+    public void insertAsset(@RequestBody List<a_assetmanage_t>  dataAll) {
+        //TRANS
+        assetManageService.DeleteAll();
+        for (a_assetmanage_t data : dataAll) {
+            assetManageService.insertAsset(data.getIp(), data.getUsechk(), data.getAssettype(), data.getHostname(), data.getDepartment(),
+                    data.getUsername(), data.getModel(), data.getBuydate(), data.getPrice(), data.getSupplier(), data.getBuyflag(), data.getRemark(),
+                    data.getOstype(), data.getOsinstl(), data.getCpu(), data.getMemory(), data.getSsd(), data.getHdd(), data.getVga(), data.getSoftware()); // List형식으로 반환
+        }
+        //COMMIT
     }
-     */
+    @ResponseBody
+    @PostMapping("/DELETE")
+    @Transactional(rollbackOn = {SQLException.class})
+    public void DeleteAsset(@RequestBody a_assetmanage_t  data) {
+        assetManageService.Delete(data.getAssetnum());
+    }
+    @ResponseBody
+    @PostMapping("/UPDATE")
+    @Transactional(rollbackOn = {SQLException.class})
+    public void UPDATEAsset(@RequestBody a_assetmanage_t  data) {
+        assetManageService.UpdateAsset(data.getAssetnum(),data.getIp(),data.getUsechk(),data.getAssettype(),data.getHostname(),data.getDepartment(),
+                data.getUsername(), data.getModel(), data.getBuydate(), data.getPrice(), data.getSupplier(), data.getBuyflag(), data.getRemark(),
+                data.getOstype(),data.getOsinstl(),data.getCpu(),data.getMemory(),data.getSsd(),data.getHdd(),data.getVga(),data.getSoftware());
+    }
 }

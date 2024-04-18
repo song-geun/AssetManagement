@@ -11,7 +11,7 @@ import java.util.List;
 @Repository
 public interface AssetManageRepository extends JpaRepository<a_assetmanage_t, Long> {
     @Procedure("USP_AssetMange")
-    List<a_assetmanage_t> USP_AssetMange(@Param("prstypeparam") String prstypeparam, @Param("ipparam") String ipparam,
+    List<a_assetmanage_t> USP_AssetMange(@Param("prstypeparam") String prstypeparam, @Param("assetnumpram") Long assetnumpram,@Param("ipparam") String ipparam,
                                          @Param("usechkparam") String usechkparam, @Param("assettypeparam") String assettypeparam,
                                          @Param("hostnameparam") String hostnameparam, @Param("departmentparam") String departmentparam,
                                          @Param("modelparam") String modelparam, @Param("usernameparam") String usernameparam,
@@ -23,7 +23,7 @@ public interface AssetManageRepository extends JpaRepository<a_assetmanage_t, Lo
                                          @Param("hddparam") String hddparam, @Param("vgaparam") String vgaparam,
                                          @Param("softwareparam") String softwareparam);
     @Procedure("USP_AssetMange")
-    void USP_AssetMange_I(@Param("prstypeparam") String prstypeparam, @Param("ipparam") String ipparam,
+    void USP_AssetMange_I(@Param("prstypeparam") String prstypeparam,@Param("assetnumpram") Long assetnumpram,@Param("ipparam") String ipparam,
                         @Param("usechkparam") String usechkparam, @Param("assettypeparam") String assettypeparam,
                         @Param("hostnameparam") String hostnameparam, @Param("departmentparam") String departmentparam,
                         @Param("modelparam") String modelparam, @Param("usernameparam") String usernameparam,

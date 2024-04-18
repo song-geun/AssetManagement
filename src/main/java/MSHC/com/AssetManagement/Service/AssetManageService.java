@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Objects;
 
 @Service
 public class AssetManageService {
@@ -22,10 +21,10 @@ public class AssetManageService {
     public AssetManageService(AssetManageRepository assetManageRepository) {
         this.assetManageRepository = assetManageRepository;
     }
-    @Transactional
+
     public List<a_assetmanage_t> findAll() {
         final List<a_assetmanage_t> Assets;
-        Assets = assetManageRepository.USP_AssetMange("S1", "", "","","","","","","", 0.0,"","","","","","","","","","","");
+        Assets = assetManageRepository.USP_AssetMange("S1", 0L,"", "","","","","","","", 0.0,"","","","","","","","","","","");
         return Assets.isEmpty() ? Collections.emptyList() : Assets;
     }
     @Transactional
@@ -41,7 +40,39 @@ public class AssetManageService {
                               String SoftWarePARAM)
     {
         final List<a_assetmanage_t> Assets = new ArrayList<>();
-        assetManageRepository.USP_AssetMange_I("I1", IPPARAM, USECHKPARAM, AssetTypePARAM,
+        assetManageRepository.USP_AssetMange_I("I1", 0L,IPPARAM, USECHKPARAM, AssetTypePARAM,
+                HostNamePARAM, departmentPARAM, ModelPARAM, UserNamePARAM, BuyDatePARAM, PricePARAM, SupplierPARAM, BuyFlagPARAM, REMARKPARAM,
+                OsTypePARAM, OsInstlPARAM, CPUPARAM, MemoryPARAM, SSDPARAM, HDDPARAM, VGAPARAM, SoftWarePARAM);
+        return  Assets.isEmpty() ? Collections.emptyList() : Assets;
+    }
+    @Transactional
+    public List<a_assetmanage_t> DeleteAll()
+    {
+        final List<a_assetmanage_t> Assets = new ArrayList<>();
+        assetManageRepository.USP_AssetMange_I("D2", 0L,"", "","","","","","","", 0.0,"","","","","","","","","","","");
+        return Assets.isEmpty() ? Collections.emptyList() : Assets;
+    }
+    @Transactional
+    public List<a_assetmanage_t> Delete(Long assetnum)
+    {
+        final List<a_assetmanage_t> Assets = new ArrayList<>();
+        assetManageRepository.USP_AssetMange_I("D1", assetnum,"", "","","","","","","", 0.0,"","","","","","","","","","","");
+        return Assets.isEmpty() ? Collections.emptyList() : Assets;
+    }
+    @Transactional
+    public List<a_assetmanage_t> UpdateAsset(Long assetnum,String IPPARAM,
+                                             String USECHKPARAM, String AssetTypePARAM,
+                                             String HostNamePARAM, String departmentPARAM,
+                                             String ModelPARAM, String UserNamePARAM,
+                                             String BuyDatePARAM, Double PricePARAM,
+                                             String SupplierPARAM, String BuyFlagPARAM, String REMARKPARAM, String OsTypePARAM,
+                                             String OsInstlPARAM, String CPUPARAM,
+                                             String MemoryPARAM, String SSDPARAM,
+                                             String HDDPARAM, String VGAPARAM,
+                                             String SoftWarePARAM)
+    {
+        final List<a_assetmanage_t> Assets = new ArrayList<>();
+        assetManageRepository.USP_AssetMange_I("U1", assetnum,IPPARAM, USECHKPARAM, AssetTypePARAM,
                 HostNamePARAM, departmentPARAM, ModelPARAM, UserNamePARAM, BuyDatePARAM, PricePARAM, SupplierPARAM, BuyFlagPARAM, REMARKPARAM,
                 OsTypePARAM, OsInstlPARAM, CPUPARAM, MemoryPARAM, SSDPARAM, HDDPARAM, VGAPARAM, SoftWarePARAM);
         return  Assets.isEmpty() ? Collections.emptyList() : Assets;
