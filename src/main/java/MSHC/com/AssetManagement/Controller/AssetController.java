@@ -37,8 +37,7 @@ public class AssetController {
     @PostMapping("/insert")
     @Transactional(rollbackOn = {SQLException.class})
     @CrossOrigin(origins = "*", allowedHeaders = "*")
-    public void insertAsset(@RequestBody a_assetmanage_t  data)
-    {
+    public void insertAsset(@RequestBody a_assetmanage_t  data) {
         assetManageService.insertAsset(data.getAssetnum(),data.getIp(),data.getUsechk(),data.getAssettype(),data.getHostname(),data.getDepartment(),
                         data.getUsername(), data.getModel(), data.getBuydate(), data.getPrice(), data.getSupplier(), data.getBuyflag(), data.getRemark(),
                         data.getOstype(),data.getOsinstl(),data.getCpu(),data.getMemory(),data.getSsd(),data.getHdd(),data.getVga(),data.getSoftware()); // List형식으로 반환
