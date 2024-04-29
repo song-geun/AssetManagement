@@ -13,7 +13,7 @@ import lombok.*;
 public class a_assetmanage_t {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long assetnum;
+    private Long assetnum = 1L;
     @Column
     private String ip;
     @Column

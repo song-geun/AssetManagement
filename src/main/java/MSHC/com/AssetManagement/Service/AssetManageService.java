@@ -28,7 +28,7 @@ public class AssetManageService {
         return Assets.isEmpty() ? Collections.emptyList() : Assets;
     }
     @Transactional
-    public List<a_assetmanage_t> insertAsset(String IPPARAM,
+    public List<a_assetmanage_t> insertAsset(Long assetnum,String IPPARAM,
                               String USECHKPARAM, String AssetTypePARAM,
                               String HostNamePARAM, String departmentPARAM,
                               String ModelPARAM, String UserNamePARAM,
@@ -40,7 +40,7 @@ public class AssetManageService {
                               String SoftWarePARAM)
     {
         final List<a_assetmanage_t> Assets = new ArrayList<>();
-        assetManageRepository.USP_AssetMange_I("I1", 0L,IPPARAM, USECHKPARAM, AssetTypePARAM,
+        assetManageRepository.USP_AssetMange_I("U2", assetnum,IPPARAM, USECHKPARAM, AssetTypePARAM,
                 HostNamePARAM, departmentPARAM, ModelPARAM, UserNamePARAM, BuyDatePARAM, PricePARAM, SupplierPARAM, BuyFlagPARAM, REMARKPARAM,
                 OsTypePARAM, OsInstlPARAM, CPUPARAM, MemoryPARAM, SSDPARAM, HDDPARAM, VGAPARAM, SoftWarePARAM);
         return  Assets.isEmpty() ? Collections.emptyList() : Assets;

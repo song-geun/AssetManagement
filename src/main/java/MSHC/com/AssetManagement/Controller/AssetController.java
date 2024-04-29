@@ -25,6 +25,8 @@ public class AssetController {
     }
 
     @GetMapping("/list")
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
+    @Transactional(rollbackOn = {SQLException.class})
     public ResponseEntity<List<AssetManageDto>> findAllCities(){
         return ResponseEntity.ok(assetManageService.findAll() // 전체를 Find 한다.
                 .stream() // 스트림으로 바꿔서
@@ -34,20 +36,21 @@ public class AssetController {
     @ResponseBody
     @PostMapping("/insert")
     @Transactional(rollbackOn = {SQLException.class})
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     public void insertAsset(@RequestBody a_assetmanage_t  data)
     {
-        assetManageService.insertAsset(data.getIp(),data.getUsechk(),data.getAssettype(),data.getHostname(),data.getDepartment(),
+        assetManageService.insertAsset(data.getAssetnum(),data.getIp(),data.getUsechk(),data.getAssettype(),data.getHostname(),data.getDepartment(),
                         data.getUsername(), data.getModel(), data.getBuydate(), data.getPrice(), data.getSupplier(), data.getBuyflag(), data.getRemark(),
                         data.getOstype(),data.getOsinstl(),data.getCpu(),data.getMemory(),data.getSsd(),data.getHdd(),data.getVga(),data.getSoftware()); // List형식으로 반환
     }
     @ResponseBody
     @PostMapping("/insertAll")
     @Transactional(rollbackOn = {SQLException.class})
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     public void insertAsset(@RequestBody List<a_assetmanage_t>  dataAll) {
         //TRANS
-        assetManageService.DeleteAll();
         for (a_assetmanage_t data : dataAll) {
-            assetManageService.insertAsset(data.getIp(), data.getUsechk(), data.getAssettype(), data.getHostname(), data.getDepartment(),
+            assetManageService.insertAsset(data.getAssetnum(),data.getIp(), data.getUsechk(), data.getAssettype(), data.getHostname(), data.getDepartment(),
                     data.getUsername(), data.getModel(), data.getBuydate(), data.getPrice(), data.getSupplier(), data.getBuyflag(), data.getRemark(),
                     data.getOstype(), data.getOsinstl(), data.getCpu(), data.getMemory(), data.getSsd(), data.getHdd(), data.getVga(), data.getSoftware()); // List형식으로 반환
         }
@@ -56,12 +59,14 @@ public class AssetController {
     @ResponseBody
     @PostMapping("/DELETE")
     @Transactional(rollbackOn = {SQLException.class})
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     public void DeleteAsset(@RequestBody a_assetmanage_t  data) {
         assetManageService.Delete(data.getAssetnum());
     }
     @ResponseBody
     @PostMapping("/UPDATE")
     @Transactional(rollbackOn = {SQLException.class})
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     public void UPDATEAsset(@RequestBody a_assetmanage_t  data) {
         assetManageService.UpdateAsset(data.getAssetnum(),data.getIp(),data.getUsechk(),data.getAssettype(),data.getHostname(),data.getDepartment(),
                 data.getUsername(), data.getModel(), data.getBuydate(), data.getPrice(), data.getSupplier(), data.getBuyflag(), data.getRemark(),
