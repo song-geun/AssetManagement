@@ -1,7 +1,6 @@
 package MSHC.com.AssetManagement.Entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
 @Data
@@ -12,6 +11,8 @@ import lombok.*;
 @Entity
 public class a_ostype_t {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long osid;
+    @Column
     private String osname;
 }
